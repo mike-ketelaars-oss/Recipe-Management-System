@@ -3,9 +3,6 @@
 const prompt = require("prompt-sync")();
 const cakeRecipes = require("./cake-recipes.json");
 
-
-// 1. GET ALL UNIQUE AUTHORS
-
 const getAuthors = (recipes) => {
     const authors = [];
 
@@ -17,9 +14,6 @@ const getAuthors = (recipes) => {
 
     return authors;
 };
-
-
-// 2. PRINT RECIPE NAMES
 
 const printRecipeNames = (recipes) => {
     if (recipes.length === 0) {
@@ -33,17 +27,11 @@ const printRecipeNames = (recipes) => {
     });
 };
 
-
-// 3. GET RECIPES BY AUTHOR
-
 const getRecipesByAuthor = (recipes, author) => {
     return recipes.filter((recipe) => {
         return recipe.Author === author;
     });
 };
-
-
-// 4. GET RECIPES BY INGREDIENT
 
 const getRecipesByIngredient = (recipes, ingredient) => {
     return recipes.filter((recipe) => {
@@ -53,9 +41,6 @@ const getRecipesByIngredient = (recipes, ingredient) => {
     });
 };
 
-
-// 5. GET RECIPE BY NAME
-
 const getRecipeByName = (recipes, name) => {
     const recipe = recipes.find((recipe) => {
         return recipe.Name.includes(name);
@@ -64,22 +49,13 @@ const getRecipeByName = (recipes, name) => {
     return recipe || null;
 };
 
-
-// 6. GET ALL INGREDIENTS
-
 const getAllIngredients = (recipes) => {
     return recipes.reduce((allIngredients, recipe) => {
         return [...allIngredients, ...recipe.Ingredients];
     }, []);
 };
 
-
-// SAVED RECIPES
-
 let savedRecipes = [];
-
-
-// PART 2 - MENU
 
 const displayMenu = () => {
     console.log("\nRecipe Management System Menu:");
@@ -94,7 +70,6 @@ const displayMenu = () => {
 
     return parseInt(choice);
 };
-
 
 let choice;
 
@@ -113,7 +88,6 @@ do {
             break;
         }
 
-
         case 2: {
             const author = prompt("Enter the name of an author: ");
 
@@ -127,7 +101,6 @@ do {
             break;
         }
 
-
         case 3: {
             const ingredient = prompt("Enter an ingredient: ");
 
@@ -140,7 +113,6 @@ do {
 
             break;
         }
-
 
         case 4: {
             const name = prompt("Enter the name of a recipe: ");
@@ -169,7 +141,6 @@ do {
             break;
         }
 
-
         case 5: {
             const ingredients = getAllIngredients(savedRecipes);
 
@@ -178,11 +149,9 @@ do {
             break;
         }
 
-
         case 0:
             console.log("Exiting...");
             break;
-
 
         default:
             console.log(
